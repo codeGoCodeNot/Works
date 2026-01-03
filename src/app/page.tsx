@@ -1,7 +1,7 @@
-import Header from "@/components/header";
+import HeroSection from "@/components/landing/hero-section";
 
 const Home = () => {
-  return <Header />;
+  return <HeroSection />;
 };
 
 export default Home;
