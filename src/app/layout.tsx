@@ -10,7 +10,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Our Works",
-  description: "You can share your work here",
+  description:
+    "This is a community space where creators can display their apps, AI tools, SaaS solutions, and innovative projects. It’s about real launches, true makers, and honest feedback.",
 };
 
 export default function RootLayout({
@@ -23,7 +24,9 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased`}>
         <ThemeProvider>
           <Header />
-          <main className="bg-secondary/20">{children}</main>
+          <main className="bg-secondary/20 min-h-screen overflow-y-auto overflow-x-hidden">
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>

@@ -2,10 +2,13 @@ import Link from "next/link";
 import LiveBadge from "../live-badge";
 import { Button } from "../ui/button";
 import { explorePath, submitPath } from "@/path";
+import { MoveRight, Share2 } from "lucide-react";
+import StatsCard from "./stats-card";
+import { fakeStatsIcon } from "@/data";
 
 const HeroSection = () => {
   return (
-    <div className="relative overflow-hidden bg-linear-to-b from-background via-background">
+    <section className="relative overflow-hidden bg-linear-to-b from-background via-background">
       <div className="wrapper">
         <div className="flex flex-col items-center justify-center self-center text-center lg:py-24 py-16">
           <LiveBadge
@@ -22,15 +25,36 @@ const HeroSection = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mb-16">
             <Button asChild size="lg" className="text-base px-8 shadow-lg">
-              <Link href={submitPath()}>Share your project</Link>
+              <Link href={submitPath()}>
+                <Share2 />
+                Share your project
+              </Link>
             </Button>
-            <Button asChild size="lg" className="text-base px-8 shadow-lg">
-              <Link href={explorePath()}>Explore projects</Link>
+            <Button
+              asChild
+              size="lg"
+              variant="secondary"
+              className="text-base px-8 shadow-lg"
+            >
+              <Link href={explorePath()}>
+                Explore projects <MoveRight />
+              </Link>
             </Button>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 max-w-2xl">
+            {fakeStatsIcon.map((stat) => (
+              <StatsCard
+                key={stat.label}
+                Icon={stat.icon}
+                value={stat.value}
+                label={stat.label}
+                hasBorder={stat.hasBorder}
+              />
+            ))}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
