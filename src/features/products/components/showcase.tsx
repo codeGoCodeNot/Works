@@ -1,42 +1,12 @@
 import SectionHeader from "@/components/section-header";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { featureProducts } from "@/features/constant";
 import { explorePath } from "@/path";
 import { FlameIcon, MoveUpRight } from "lucide-react";
 import Link from "next/link";
+import ProductCard from "./product-card";
 
 const Showcase = () => {
-  const card = (
-    <Card className="w-full max-w-sm">
-      <CardHeader>
-        <CardTitle>Login to your account</CardTitle>
-        <CardDescription>
-          Enter your email below to login to your account
-        </CardDescription>
-        <CardAction>
-          <Button variant="link">Sign Up</Button>
-        </CardAction>
-      </CardHeader>
-      <CardContent></CardContent>
-      <CardFooter className="flex-col gap-2">
-        <Button type="submit" className="w-full">
-          Login
-        </Button>
-        <Button variant="outline" className="w-full">
-          Login with Google
-        </Button>
-      </CardFooter>
-    </Card>
-  );
-
   return (
     <section className="py-20 bg-muted/20">
       <div className="wrapper">
@@ -51,6 +21,11 @@ const Showcase = () => {
               View all <MoveUpRight />
             </Link>
           </Button>
+        </div>
+        <div className="grid-wrapper">
+          {featureProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
         </div>
       </div>
     </section>
