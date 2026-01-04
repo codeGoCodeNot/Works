@@ -1,10 +1,11 @@
 import Link from "next/link";
-import LiveBadge from "../live-badge";
-import { Button } from "../ui/button";
+
 import { explorePath, submitPath } from "@/path";
 import { MoveRight, Share2 } from "lucide-react";
 import StatsCard from "./stats-card";
 import { fakeStatsIcon } from "@/data";
+import LiveBadge from "@/components/live-badge";
+import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (

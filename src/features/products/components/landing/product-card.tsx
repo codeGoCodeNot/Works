@@ -30,7 +30,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
     <Link href={productPath(product.id)}>
       <Card
         className="group transition duration-200 transform hover:-translate-y-2 hover:shadow-xl 
-      border-solid border-gray-400 min-h-[180px]"
+      border-solid border-gray-400 min-h-[180px]
+      animate-fade-from-top
+      "
       >
         <CardHeader>
           <div className="flex items-center gap-x-4 justify-start">
