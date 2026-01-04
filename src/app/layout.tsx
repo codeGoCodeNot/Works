@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import ThemeProvider from "@/components/theme/theme-provider";
+import Footer from "@/components/footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({
           <main className="bg-secondary/20 min-h-screen overflow-y-auto overflow-x-hidden">
             {children}
           </main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
