@@ -1,6 +1,6 @@
 import SectionHeader from "@/components/section-header";
 import { Button } from "@/components/ui/button";
-import { featureProducts } from "@/features/constant";
+import { featuredProducts } from "@/features/constant";
 import { explorePath } from "@/path";
 import { FlameIcon, MoveUpRight } from "lucide-react";
 import Link from "next/link";
@@ -23,7 +23,7 @@ const Showcase = () => {
           </Button>
         </div>
         <div className="grid-wrapper">
-          {featureProducts.map((product) => (
+          {featuredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

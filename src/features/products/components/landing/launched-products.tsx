@@ -1,5 +1,37 @@
+import SectionHeader from "@/components/section-header";
+import { LucideCalendar, LucideRocket } from "lucide-react";
+import ProductCard from "./product-card";
+import EmptyState from "@/components/empty-state";
+
 const LaunchedProducts = () => {
-  return <section>LaunchedProducts</section>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const featuredProducts: any[] = [];
+
+  return (
+    <section className="py-20">
+      <div className="wrapper space-y-12">
+        <SectionHeader
+          title="Recently Launched"
+          icon={<LucideRocket />}
+          description="The most recent launched in platform"
+        />
+        {featuredProducts.length > 0 ? (
+          <div className="grid-wrapper">
+            {featuredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        ) : (
+          <EmptyState
+            message="No products Launched this week"
+            icon={
+              <LucideCalendar className="size-12 text-muted-foreground/50 mx-auto mb-4" />
+            }
+          />
+        )}
+      </div>
+    </section>
+  );
 };
 
 export default LaunchedProducts;

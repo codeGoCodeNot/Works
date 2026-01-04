@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { explorePath, submitPath } from "@/path";
 import { MoveRight, Share2 } from "lucide-react";
-import StatsCard from "./stats-card";
+import StatsCard from "../../../../components/stats-card";
 import { fakeStatsIcon } from "@/data";
 import LiveBadge from "@/components/live-badge";
 import { Button } from "@/components/ui/button";

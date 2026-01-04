@@ -1,4 +1,4 @@
-export const featureProducts = [
+export const featuredProducts = [
   {
     id: "1",
     name: "VisionAI",
