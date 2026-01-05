@@ -13,6 +13,7 @@ const main = async () => {
 
   for (const product of featuredProducts) {
     await db.insert(products).values({
+      id: product.id,
       name: product.name,
       slug: product.slug,
       tagline: product.tagline,

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { explorePath } from "@/path";
 import { FlameIcon, MoveUpRight } from "lucide-react";
 import Link from "next/link";
-import getProducts from "../actions/products-select";
+import getProducts from "../actions/get-products";
 import ProductCard from "./product-card";
 
 const Showcase = async () => {

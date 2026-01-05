@@ -2,10 +2,10 @@ import SectionHeader from "@/components/section-header";
 import { LucideCalendar, LucideRocket } from "lucide-react";
 import ProductCard from "./product-card";
 import EmptyState from "@/components/empty-state";
+import getFeaturedProducts from "../actions/get-featured-products";
 
-const LaunchedProducts = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const featuredProducts: any[] = [];
+const LaunchedProducts = async () => {
+  const featuredProducts = await getFeaturedProducts();
 
   return (
     <section className="py-20">
@@ -18,7 +18,7 @@ const LaunchedProducts = () => {
         {featuredProducts.length > 0 ? (
           <div className="grid-wrapper">
             {featuredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product.id} {...product} />
             ))}
           </div>
         ) : (

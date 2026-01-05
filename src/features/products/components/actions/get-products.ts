@@ -7,7 +7,7 @@ const getProducts = async () => {
     .select()
     .from(products)
     .where(eq(products.status, "approved"))
-    .orderBy(desc(products.createdAt));
+    .orderBy(desc(products.voteCount));
 };
 
 export default getProducts;
