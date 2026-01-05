@@ -1,12 +1,18 @@
+import { explorePath, homePath } from "@/path";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
+import { LucideCompass, LucideWaypoints } from "lucide-react";
 import Link from "next/link";
 import ThemeSwitcher from "./theme/theme-switcher";
-import { LucideCompass, LucideUser, LucideWaypoints } from "lucide-react";
-import { explorePath, homePath } from "@/path";
 import { Button } from "./ui/button";
+import SignItems from "./sign-items";
 
 const Header = () => {
-  const isSignIn = false;
-
   return (
     <nav
       className="animate-slide-from-top
@@ -28,18 +34,7 @@ const Header = () => {
       </Link>
 
       <div className="flex items-center gap-x-2">
-        <ThemeSwitcher />
-        {isSignIn ? (
-          <>
-            <Button>Submit Project</Button>
-            <Button variant="ghost" size="icon">
-              <LucideUser />
-            </Button>
-            <Button variant="outline">Sign out</Button>
-          </>
-        ) : (
-          <Button>Sign In</Button>
-        )}
+        <SignItems />
       </div>
     </nav>
   );
