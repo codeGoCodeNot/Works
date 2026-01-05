@@ -1,15 +1,6 @@
 import { explorePath, homePath } from "@/path";
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-} from "@clerk/nextjs";
 import { LucideCompass, LucideWaypoints } from "lucide-react";
 import Link from "next/link";
-import ThemeSwitcher from "./theme/theme-switcher";
-import { Button } from "./ui/button";
 import SignItems from "./sign-items";
 
 const Header = () => {

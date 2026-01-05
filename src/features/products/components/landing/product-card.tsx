@@ -16,9 +16,16 @@ type ProductCardProps = {
   product: {
     id: string;
     name: string;
+    slug: string;
+    tagline: string;
     description: string;
+    websiteUrl: string;
     tags: string[];
-    votes: number;
+    createdAt: Date;
+    approvedAt: Date;
+    status: string;
+    submittedBy: string;
+    voteCount: number;
     isFeatured: boolean;
   };
 };

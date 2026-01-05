@@ -1,6 +1,6 @@
 import SectionHeader from "@/components/section-header";
 import { Button } from "@/components/ui/button";
-import { featuredProducts } from "@/features/constant";
+import { featuredProducts } from "@/db/constants";
 import { explorePath } from "@/path";
 import { FlameIcon, MoveUpRight } from "lucide-react";
 import Link from "next/link";
