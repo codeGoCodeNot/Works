@@ -7,30 +7,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { products } from "@/db/schema";
 import { cn } from "@/lib/utils";
 import { productPath } from "@/path";
+import { InferSelectModel } from "drizzle-orm";
 import { LucideChevronDown, LucideChevronUp, LucideStar } from "lucide-react";
 import Link from "next/link";
 
-type ProductCardProps = {
-  product: {
-    id: string;
-    name: string;
-    slug: string;
-    tagline: string;
-    description: string;
-    websiteUrl: string;
-    tags: string[];
-    createdAt: Date;
-    approvedAt: Date;
-    status: string;
-    submittedBy: string;
-    voteCount: number;
-    isFeatured: boolean;
-  };
-};
+type ProductCardProps = InferSelectModel<typeof products>;
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = (product: ProductCardProps) => {
   const hasVoted = false;
 
   return (
@@ -48,7 +34,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 <CardTitle className="text-lg group-hover:text-primary/80 transition-colors">
                   {product.name}
                 </CardTitle>
-                {product.isFeatured && (
+                {product.voteCount > 10 && (
                   <Badge className="gap-x-1 bg-primary text-primary-foreground">
                     <LucideStar className="fill-current" />
                     Featured
@@ -90,7 +76,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </CardHeader>
         <CardFooter>
           <div className="flex flex-1 items-center gap-x-2">
-            {product.tags.map((tag) => (
+            {product.tags?.map((tag) => (
               <Badge variant="secondary" key={tag}>
                 {tag}
               </Badge>

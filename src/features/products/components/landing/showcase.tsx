@@ -1,12 +1,13 @@
 import SectionHeader from "@/components/section-header";
 import { Button } from "@/components/ui/button";
-import { featuredProducts } from "@/db/constants";
 import { explorePath } from "@/path";
 import { FlameIcon, MoveUpRight } from "lucide-react";
 import Link from "next/link";
+import getProducts from "../actions/products-select";
 import ProductCard from "./product-card";
 
-const Showcase = () => {
+const Showcase = async () => {
+  const featuredProducts = await getProducts();
   return (
     <section className="py-20 bg-muted/20">
       <div className="wrapper">
@@ -24,7 +25,7 @@ const Showcase = () => {
         </div>
         <div className="grid-wrapper">
           {featuredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} {...product} />
           ))}
         </div>
       </div>

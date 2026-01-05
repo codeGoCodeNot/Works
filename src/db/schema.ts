@@ -14,7 +14,7 @@ export const products = pgTable(
   "products",
   {
     // core product info
-    id: serial("id").primaryKey(),
+    id: varchar("id", { length: 36 }).primaryKey(),
     name: varchar("name", { length: 120 }).notNull(),
     slug: varchar("slug", { length: 140 }).notNull(),
     tagline: varchar("tagline", { length: 200 }),
@@ -37,11 +37,9 @@ export const products = pgTable(
     //   for backend queries
     organizationId: varchar("organization_id", { length: 255 }),
   },
-  (table) => ({
-    slugIdx: uniqueIndex("products_slug_idx").on(table.slug),
-    statusIdx: index("products_status_idx").on(table.status),
-    organizationIdx: index("products_organization_idx").on(
-      table.organizationId
-    ),
-  })
+  (table) => [
+    uniqueIndex("products_slug_idx").on(table.slug),
+    index("products_status_idx").on(table.status),
+    index("products_organization_idx").on(table.organizationId),
+  ]
 );

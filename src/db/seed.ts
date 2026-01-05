@@ -1,8 +1,7 @@
+import { featuredProducts } from "@/db/featured-products";
 import "dotenv/config";
 import { drizzle } from "drizzle-orm/neon-http";
 import { products } from "./schema";
-import { featuredProducts } from "@/db/constants";
-import { error } from "console";
 
 const db = drizzle(process.env.DATABASE_URL as string);
 
