@@ -1,12 +1,13 @@
 import { products } from "@/db/schema";
 import { db } from "@/lib";
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 
 const getProducts = async () => {
   return await db
     .select()
     .from(products)
-    .where(eq(products.status, "approved"));
+    .where(eq(products.status, "approved"))
+    .orderBy(desc(products.createdAt));
 };
 
 export default getProducts;
