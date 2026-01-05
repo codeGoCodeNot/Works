@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import ThemeProvider from "@/components/theme/theme-provider";
 import Footer from "@/components/footer";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,16 +22,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning lang="en">
-      <body className={`${inter.className} antialiased`}>
-        <ThemeProvider>
-          <Header />
-          <main className="bg-secondary/20 min-h-screen overflow-y-auto overflow-x-hidden">
-            {children}
-          </main>
-          <Footer />
-        </ThemeProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html suppressHydrationWarning lang="en">
+        <body className={`${inter.className} antialiased`}>
+          <ThemeProvider>
+            <Header />
+            <main className="bg-secondary/20 min-h-screen overflow-y-auto overflow-x-hidden">
+              {children}
+            </main>
+            <Footer />
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
