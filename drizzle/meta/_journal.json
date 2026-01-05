@@ -8,6 +8,13 @@
       "when": 1767593704740,
       "tag": "0000_unusual_the_twelve",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1767599027052,
+      "tag": "0001_gorgeous_living_lightning",
+      "breakpoints": true
     }
   ]
 }

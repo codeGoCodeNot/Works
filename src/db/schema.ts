@@ -1,13 +1,12 @@
 import {
-  integer,
-  pgTable,
-  varchar,
-  serial,
-  text,
-  json,
-  timestamp,
   index,
+  integer,
+  json,
+  pgTable,
+  text,
+  timestamp,
   uniqueIndex,
+  varchar,
 } from "drizzle-orm/pg-core";
 
 export const products = pgTable(
