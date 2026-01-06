@@ -7,6 +7,8 @@ import {
 } from "@clerk/nextjs";
 import ThemeSwitcher from "./theme/theme-switcher";
 import { Button } from "./ui/button";
+import Link from "next/link";
+import { submitPath } from "@/path";
 
 const SignItems = () => {
   return (
@@ -19,7 +21,9 @@ const SignItems = () => {
       </SignedOut>
       <SignedIn>
         <ThemeSwitcher />
-        <Button>Submit Project</Button>
+        <Button asChild>
+          <Link href={submitPath()}>Submit Project</Link>
+        </Button>
         <UserButton />
       </SignedIn>
     </>
