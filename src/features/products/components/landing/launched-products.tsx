@@ -13,7 +13,7 @@ const LaunchedProducts = async () => {
         <SectionHeader
           title="Recently Launched"
           icon={<LucideRocket />}
-          description="The most recent launched in platform"
+          description="The most recent launched in platform last week"
         />
         {featuredProducts.length > 0 ? (
           <div className="grid-wrapper">
