@@ -10,10 +10,10 @@ export const generateStaticParams = async () => {
   return products.map((product) => ({ productId: product.id }));
 };
 
-const ProductPage = cache(async ({ params }: ProductPageProps) => {
+const ProductPage = async ({ params }: ProductPageProps) => {
   const { productId } = await params;
 
   return <div>Product Page {productId}</div>;
-});
+};
 
 export default ProductPage;
