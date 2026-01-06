@@ -3,6 +3,8 @@ import { db } from "@/lib";
 import { desc, eq } from "drizzle-orm";
 
 const getProducts = async () => {
+  "use cache";
+
   return await db
     .select()
     .from(products)

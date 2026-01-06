@@ -1,12 +1,11 @@
-import getFeaturedProducts from "@/features/products/actions/get-featured-products";
-import { cache } from "react";
+import getProducts from "@/features/products/actions/get-products";
 
 type ProductPageProps = {
   params: Promise<{ productId: string }>;
 };
 
 export const generateStaticParams = async () => {
-  const products = await getFeaturedProducts();
+  const products = await getProducts();
   return products.map((product) => ({ productId: product.id }));
 };
 

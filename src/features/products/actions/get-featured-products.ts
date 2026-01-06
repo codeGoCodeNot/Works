@@ -1,7 +1,20 @@
-import getProducts from "./get-products";
+import { connection } from "next/server";
+import { products } from "@/db/schema";
+import { db } from "@/lib";
+import { desc, eq } from "drizzle-orm";
+
+export const getAllProducts = async () => {
+  return await db
+    .select()
+    .from(products)
+    .where(eq(products.status, "approved"))
+    .orderBy(desc(products.voteCount));
+};
 
 const getFeaturedProducts = async () => {
-  const productsData = await getProducts();
+  await connection();
+
+  const productsData = await getAllProducts();
   const oneWeekAgo = new Date();
   oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 

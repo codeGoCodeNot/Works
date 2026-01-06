@@ -1,5 +1,3 @@
-"use cache";
-
 import SectionHeader from "@/components/section-header";
 import { LucideCalendar, LucideRocket } from "lucide-react";
 import ProductCard from "./product-card";
