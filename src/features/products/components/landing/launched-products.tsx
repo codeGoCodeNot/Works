@@ -1,7 +1,6 @@
-import SectionHeader from "@/components/section-header";
-import { LucideCalendar, LucideRocket } from "lucide-react";
-import ProductCard from "../../../../components/product-card";
 import EmptyState from "@/components/empty-state";
+import { LucideCalendar } from "lucide-react";
+import ProductCard from "../../../../components/product-card";
 import getFeaturedProducts from "../../actions/get-featured-products";
 
 const LaunchedProducts = async () => {
