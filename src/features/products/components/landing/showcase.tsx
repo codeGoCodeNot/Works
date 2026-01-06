@@ -1,5 +1,3 @@
-"use cache";
-
 import SectionHeader from "@/components/section-header";
 import { Button } from "@/components/ui/button";
 import { explorePath } from "@/path";
