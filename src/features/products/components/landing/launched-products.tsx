@@ -1,8 +1,10 @@
+"use cache";
+
 import SectionHeader from "@/components/section-header";
 import { LucideCalendar, LucideRocket } from "lucide-react";
 import ProductCard from "./product-card";
 import EmptyState from "@/components/empty-state";
-import getFeaturedProducts from "../actions/get-featured-products";
+import getFeaturedProducts from "../../actions/get-featured-products";
 
 const LaunchedProducts = async () => {
   const featuredProducts = await getFeaturedProducts();

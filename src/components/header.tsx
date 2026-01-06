@@ -2,6 +2,8 @@ import { explorePath, homePath } from "@/path";
 import { LucideCompass, LucideWaypoints } from "lucide-react";
 import Link from "next/link";
 import SignItems from "./sign-items";
+import { Suspense } from "react";
+import Spinner from "./spinner";
 
 const Header = () => {
   return (
@@ -25,7 +27,9 @@ const Header = () => {
       </Link>
 
       <div className="flex items-center gap-x-2">
-        <SignItems />
+        <Suspense fallback={<Spinner className="animate-spin h-4 w-4" />}>
+          <SignItems />
+        </Suspense>
       </div>
     </nav>
   );

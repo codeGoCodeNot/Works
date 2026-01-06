@@ -1,9 +1,11 @@
+"use cache";
+
 import SectionHeader from "@/components/section-header";
 import { Button } from "@/components/ui/button";
 import { explorePath } from "@/path";
 import { FlameIcon, MoveUpRight } from "lucide-react";
 import Link from "next/link";
-import getProducts from "../actions/get-products";
+import getProducts from "../../actions/get-products";
 import ProductCard from "./product-card";
 
 const Showcase = async () => {

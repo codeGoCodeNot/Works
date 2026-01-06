@@ -7,6 +7,8 @@ import {
 } from "@clerk/nextjs";
 import ThemeSwitcher from "./theme/theme-switcher";
 import { Button } from "./ui/button";
+import { Suspense } from "react";
+import Spinner from "./spinner";
 
 const SignItems = () => {
   return (
