@@ -2,7 +2,7 @@ type SectionHeaderProps = {
   icon: React.ReactElement;
   title: string;
   description: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 const SectionHeader = ({
