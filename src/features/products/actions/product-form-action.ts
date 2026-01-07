@@ -24,7 +24,7 @@ const productFormAction = async (
     if (!userId) {
       return {
         success: false,
-        error: {},
+        errors: {},
         message: "You must be login to submit a product",
       };
     }
@@ -32,7 +32,7 @@ const productFormAction = async (
     if (!orgId) {
       return {
         success: false,
-        error: {},
+        errors: {},
         message: "You must be a member of an organization to submit a product",
       };
     }
@@ -75,14 +75,14 @@ const productFormAction = async (
 
     return {
       success: true,
-      error: {},
+      errors: {},
       message: "Product submitted successfully! It will be reviewed shortly.",
     };
   } catch (error) {
     if (error instanceof z.ZodError) {
       return {
         success: false,
-        error: error.flatten().fieldErrors,
+        errors: error.flatten().fieldErrors,
         message: "Validation failed",
       };
     }

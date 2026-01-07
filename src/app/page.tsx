@@ -3,6 +3,7 @@ import Spinner from "@/components/spinner";
 import HeroSection from "@/features/products/components/landing/hero-section";
 import LaunchedProducts from "@/features/products/components/landing/launched-products";
 import Showcase from "@/features/products/components/landing/showcase";
+import LaunchedProductSkeleton from "@/features/products/components/launched-product-skeleton";
 import { LucideRocket } from "lucide-react";
 import { Suspense } from "react";
 
@@ -17,7 +18,7 @@ const Home = () => {
         icon={<LucideRocket />}
         description="The most recent launched in platform last week"
       >
-        <Suspense fallback={<Spinner className="animate-spin h-16 w-16" />}>
+        <Suspense fallback={<LaunchedProductSkeleton />}>
           <LaunchedProducts />
         </Suspense>
       </SectionHeader>
