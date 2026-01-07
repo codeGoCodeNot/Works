@@ -6,14 +6,14 @@ import { auth, currentUser } from "@clerk/nextjs/server";
 import z from "zod";
 import { productSchema } from "../validation/product-validation";
 
-type PrevStateProps = {
+export type FormStateProps = {
   success: boolean;
   errors: Record<string, string[]>;
   message: string;
 };
 
 const productFormAction = async (
-  prevState: PrevStateProps,
+  prevState: FormStateProps,
   formData: FormData
 ) => {
   console.log(formData);
@@ -24,6 +24,7 @@ const productFormAction = async (
     if (!userId) {
       return {
         success: false,
+        error: {},
         message: "You must be login to submit a product",
       };
     }
@@ -31,6 +32,7 @@ const productFormAction = async (
     if (!orgId) {
       return {
         success: false,
+        error: {},
         message: "You must be a member of an organization to submit a product",
       };
     }
@@ -73,6 +75,7 @@ const productFormAction = async (
 
     return {
       success: true,
+      error: {},
       message: "Product submitted successfully! It will be reviewed shortly.",
     };
   } catch (error) {
@@ -83,13 +86,13 @@ const productFormAction = async (
         message: "Validation failed",
       };
     }
-  }
 
-  return {
-    success: false,
-    errors: "",
-    message: "failed to submit product",
-  };
+    return {
+      success: false,
+      errors: {},
+      message: "Failed to submit product",
+    };
+  }
 };
 
 export default productFormAction;

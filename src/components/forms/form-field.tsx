@@ -14,7 +14,7 @@ type FormFieldProps = {
       | React.ChangeEvent<HTMLTextAreaElement>
       | React.ChangeEvent<HTMLInputElement>
   ) => void;
-  error: string;
+  error: string[];
   helperText?: string;
   textarea?: boolean;
 };
@@ -55,7 +55,7 @@ const FormField = ({
       {helperText && (
         <p className="text-xs text-muted-foreground">{helperText}</p>
       )}
-      {error && <p className="text-sm text-red-500">{error}</p>}
+      {error && <p className="text-sm text-red-500">{error?.[0]}</p>}
     </div>
   );
 };
