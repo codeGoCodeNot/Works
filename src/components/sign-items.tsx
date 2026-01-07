@@ -1,14 +1,9 @@
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-} from "@clerk/nextjs";
+import { submitPath } from "@/path";
+import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
+import Link from "next/link";
+import CustomUserButton from "./custom-user-button";
 import ThemeSwitcher from "./theme/theme-switcher";
 import { Button } from "./ui/button";
-import Link from "next/link";
-import { submitPath } from "@/path";
 
 const SignItems = () => {
   return (
@@ -24,7 +19,7 @@ const SignItems = () => {
         <Button asChild>
           <Link href={submitPath()}>Submit Project</Link>
         </Button>
-        <UserButton />
+        <CustomUserButton />
       </SignedIn>
     </>
   );

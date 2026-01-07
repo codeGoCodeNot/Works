@@ -3,8 +3,8 @@
 import { products } from "@/db/schema";
 import { db } from "@/lib";
 import { auth, currentUser } from "@clerk/nextjs/server";
-import { productSchema } from "../validation/product-validation";
 import z from "zod";
+import { productSchema } from "../validation/product-validation";
 
 type PrevStateProps = {
   success: boolean;
@@ -19,7 +19,7 @@ const productFormAction = async (
   console.log(formData);
 
   try {
-    const { userId } = await auth();
+    const { userId, orgId } = await auth();
 
     if (!userId) {
       return {
@@ -27,6 +27,14 @@ const productFormAction = async (
         message: "You must be login to submit a product",
       };
     }
+
+    if (!orgId) {
+      return {
+        success: false,
+        message: "You must be a member of an organization to submit a product",
+      };
+    }
+
     // data
     const user = await currentUser();
     const userEmail = user?.emailAddresses[0]?.emailAddress || "anonymous";
@@ -59,6 +67,7 @@ const productFormAction = async (
       tags: tagsArray,
       status: "pending",
       submittedBy: userEmail,
+      organizationId: orgId,
       userId,
     });
 
