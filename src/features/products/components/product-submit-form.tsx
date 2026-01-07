@@ -2,22 +2,34 @@
 
 import FormField from "@/components/forms/form-field";
 import { Button } from "@/components/ui/button";
-import productForm from "../actions/product-form";
+import { useActionState } from "react";
+import productFormAction from "../actions/product-form-action";
+import { LucideRocket } from "lucide-react";
+import Spinner from "@/components/spinner";
+
+const initialState = {
+  errors: {},
+  success: false,
+  message: "",
+};
 
 const ProductSubmitForm = () => {
-  const handleSubmit = async (formData: FormData) => {
-    await productForm(formData);
-  };
+  const [actionState, formAction, isPending] = useActionState(
+    productFormAction,
+    initialState
+  );
+
+  const { errors, message, success } = actionState;
 
   return (
-    <form className="space-y-6" onSubmit={handleSubmit}>
+    <form className="space-y-6" action={formAction}>
       <FormField
         label="Product Name"
         id="name"
         name="name"
         placeholder="Your product name"
         required
-        error=""
+        error={errors?.name}
       />
 
       <FormField
@@ -26,7 +38,7 @@ const ProductSubmitForm = () => {
         name="slug"
         placeholder="your-product-name"
         required
-        error=""
+        error={errors?.slug}
         helperText="The slug is a short, URL-safe version of your product name."
       />
 
@@ -36,7 +48,7 @@ const ProductSubmitForm = () => {
         name="description"
         placeholder="Tell us more about your product..."
         required
-        error=""
+        error={errors?.description}
         textarea
       />
 
@@ -46,7 +58,7 @@ const ProductSubmitForm = () => {
         name="tagline"
         placeholder="Write a short, catchy description for your product."
         required
-        error=""
+        error={errors?.tagline}
       />
 
       <FormField
@@ -55,7 +67,7 @@ const ProductSubmitForm = () => {
         name="websiteUrl"
         placeholder="https://www.yourproduct.com"
         required
-        error=""
+        error={errors?.websiteUrl}
         helperText="Enter your product's website or landing page"
       />
 
@@ -65,12 +77,19 @@ const ProductSubmitForm = () => {
         name="tags"
         placeholder="AI, Productivity, SaaS"
         required
-        error=""
+        error={errors?.tags}
         helperText="Comma-separated tags (e.g., AI, SaaS, Productivity)"
       />
 
-      <Button type="submit" size="lg" className="w-full">
-        Submit Product
+      <Button type="submit" size="lg" className="w-full flex items-center">
+        {isPending ? (
+          <Spinner className="animate-spin" />
+        ) : (
+          <>
+            <LucideRocket className="text-red-500 fill-red-500" />
+            Submit Product
+          </>
+        )}
       </Button>
     </form>
   );

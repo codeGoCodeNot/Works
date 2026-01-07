@@ -9,7 +9,7 @@ type FormFieldProps = {
   id: string;
   placeholder?: string;
   required?: boolean;
-  onChange?: (
+  onChange: (
     e:
       | React.ChangeEvent<HTMLTextAreaElement>
       | React.ChangeEvent<HTMLInputElement>

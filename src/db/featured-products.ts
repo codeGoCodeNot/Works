@@ -1,13 +1,11 @@
 export const featuredProducts = [
   {
-    id: "1",
     name: "VisionAI",
     slug: "visionai",
     tagline: "See beyond the pixels.",
     description: "AI-powered image recognition for smart apps",
     websiteUrl: "https://visionai.example.com",
     tags: ["AI", "Vision", "Tools"],
-    // Recent (within 7 days)
     createdAt: new Date("2025-12-31"),
     approvedAt: new Date("2026-01-02"),
     status: "approved",
@@ -16,14 +14,12 @@ export const featuredProducts = [
     isFeatured: true,
   },
   {
-    id: "2",
     name: "CodeFlow",
     slug: "codeflow",
     tagline: "Collaborate. Ship. Win.",
     description: "Collaborative coding platform for teams",
     websiteUrl: "https://codeflow.example.com",
     tags: ["Collaboration", "Coding", "Teams"],
-    // Recent (within 7 days)
     createdAt: new Date("2026-01-01"),
     approvedAt: new Date("2026-01-03"),
     status: "approved",
@@ -32,7 +28,6 @@ export const featuredProducts = [
     isFeatured: false,
   },
   {
-    id: "3",
     name: "TaskWave",
     slug: "taskwave",
     tagline: "Ride the productivity wave.",
@@ -47,14 +42,12 @@ export const featuredProducts = [
     isFeatured: false,
   },
   {
-    id: "4",
     name: "SocialSpark",
     slug: "socialspark",
     tagline: "Ignite your community.",
     description: "Build instant communities around your projects",
     websiteUrl: "https://socialspark.example.com",
     tags: ["Community", "Social", "Engagement"],
-    // Recent (within 7 days)
     createdAt: new Date("2026-01-03"),
     approvedAt: new Date("2026-01-05"),
     status: "approved",
@@ -63,7 +56,6 @@ export const featuredProducts = [
     isFeatured: true,
   },
   {
-    id: "5",
     name: "DataDrift",
     slug: "datadrift",
     tagline: "Analytics that move with you.",
@@ -78,14 +70,12 @@ export const featuredProducts = [
     isFeatured: false,
   },
   {
-    id: "6",
     name: "PixelPush",
     slug: "pixelpush",
     tagline: "Web design made simple.",
     description: "Drag-and-drop website builder for any skill level",
     websiteUrl: "https://pixelpush.example.com",
     tags: ["Design", "Builder", "Website"],
-    // Recent (within 7 days)
     createdAt: new Date("2026-01-02"),
     approvedAt: new Date("2026-01-04"),
     status: "approved",
@@ -94,7 +84,6 @@ export const featuredProducts = [
     isFeatured: false,
   },
   {
-    id: "7",
     name: "SecureBase",
     slug: "securebase",
     tagline: "Lock down your users.",
@@ -109,7 +98,6 @@ export const featuredProducts = [
     isFeatured: true,
   },
   {
-    id: "8",
     name: "CloudFuse",
     slug: "cloudfuse",
     tagline: "Connect with the cloud, instantly.",
@@ -124,7 +112,6 @@ export const featuredProducts = [
     isFeatured: false,
   },
   {
-    id: "9",
     name: "MarketPulse",
     slug: "marketpulse",
     tagline: "Feel the rhythm of the market.",

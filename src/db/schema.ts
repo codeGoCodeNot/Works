@@ -9,11 +9,15 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 
+import { createId } from "@paralleldrive/cuid2";
+
 export const products = pgTable(
   "products",
   {
     // core product info
-    id: varchar("id", { length: 36 }).primaryKey(),
+    id: varchar("id", { length: 36 })
+      .primaryKey()
+      .$defaultFn(() => createId()),
     name: varchar("name", { length: 120 }).notNull(),
     slug: varchar("slug", { length: 140 }).notNull(),
     tagline: varchar("tagline", { length: 200 }),
