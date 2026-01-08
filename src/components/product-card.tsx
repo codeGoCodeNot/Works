@@ -1,5 +1,4 @@
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardDescription,
@@ -8,11 +7,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { products } from "@/db/schema";
-import { cn } from "@/lib/utils";
 import { productPath } from "@/path";
 import { InferSelectModel } from "drizzle-orm";
-import { LucideChevronDown, LucideChevronUp, LucideStar } from "lucide-react";
+import { LucideStar } from "lucide-react";
 import Link from "next/link";
+import VotingButtons from "./ui/voting-buttons";
 
 type ProductCardProps = InferSelectModel<typeof products>;
 
@@ -23,7 +22,7 @@ const ProductCard = (product: ProductCardProps) => {
     <Link href={productPath(product.id)}>
       <Card
         className="group transition duration-200 transform hover:-translate-y-2 hover:shadow-xl 
-      border-solid border-gray-400 min-h-[180px]
+      border-solid border-gray-400 min-h-[200px]
       animate-fade-from-top
       "
       >
@@ -43,35 +42,12 @@ const ProductCard = (product: ProductCardProps) => {
               </div>
               <CardDescription>{product.description}</CardDescription>
             </div>
-            <div className="flex flex-col items-center">
-              <Button
-                variant="ghost"
-                size="icon-sm"
-                className={cn(
-                  "text-primary",
-                  hasVoted
-                    ? "bg-primary/10 text-primary hover:bg-primary/20"
-                    : "hover:bg-primary/10 hover:text-primary"
-                )}
-              >
-                <LucideChevronUp />
-              </Button>
-              <span className="text-sm font-semibold transition-colors text-foreground">
-                5
-              </span>
-              <Button
-                variant="ghost"
-                size="icon-sm"
-                className={cn(
-                  "text-primary",
-                  hasVoted
-                    ? "hover:text-destructive"
-                    : "opacity-50 cursor-not-allowed"
-                )}
-              >
-                <LucideChevronDown />
-              </Button>
-            </div>
+
+            <VotingButtons
+              hasVoted={hasVoted}
+              productId={product.id}
+              voteCount={product.voteCount}
+            />
           </div>
         </CardHeader>
         <CardFooter>
