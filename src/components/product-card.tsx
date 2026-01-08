@@ -17,7 +17,7 @@ type ProductCardProps = InferSelectModel<typeof products>;
 
 const ProductCard = (product: ProductCardProps) => {
   return (
-    <Link href={productPath(product.id)}>
+    <Link href={productPath(product.slug)}>
       <Card
         className="group transition duration-200 transform hover:-translate-y-2 hover:shadow-xl 
       border-solid border-gray-400 min-h-[200px]
