@@ -7,11 +7,13 @@ import { FlameIcon, MoveUpRight } from "lucide-react";
 import Link from "next/link";
 import ProductCard from "../../../../components/product-card";
 import getProducts from "../../actions/get-products";
+import ExploreProducts from "../explore-products";
 
 const Showcase = async () => {
   const featuredProducts = await getProducts();
   return (
-    <section className="py-20 bg-muted/20">
+    <section className="bg-muted/20">
+      <ExploreProducts />
       <div className="wrapper">
         <div className="flex flex-1 items-center justify-between mb-8">
           <SectionHeader

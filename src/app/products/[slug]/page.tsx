@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import getProductBySlug from "@/features/products/actions/get-product-by-slug";
 import getProducts from "@/features/products/actions/get-products";
-import { explorePath, homePath } from "@/path";
+import { homePath } from "@/path";
 import {
   LucideArrowLeft,
   LucideCalendar,
