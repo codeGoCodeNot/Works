@@ -5,7 +5,7 @@ import { db } from "@/lib";
 import { homePath } from "@/path";
 import { auth } from "@clerk/nextjs/server";
 import { eq, sql } from "drizzle-orm";
-import { refresh, revalidatePath } from "next/cache";
+import { revalidatePath } from "next/cache";
 
 const downvoteProductAction = async (productId: string) => {
   try {
