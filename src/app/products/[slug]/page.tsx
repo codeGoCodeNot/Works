@@ -31,7 +31,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
   const product = await getProductBySlug(slug);
 
   if (!product) notFound();
-  const { name, description, websiteUrl, tags, voteCount, tagline } = product;
+  const { name, description, websiteUrl, tags, tagline } = product;
 
   return (
     <div className="py-20">
@@ -107,27 +107,16 @@ const ProductPage = async ({ params }: ProductPageProps) => {
 
           <div className="lg:col-span-1 mt-20">
             <div className="sticky top-24 space-y-4">
-              <div className="border rounded-lg p-6 bg-background">
-                <div className="text-center mb-6">
-                  <p className="text-sm text-muted-foreground mb-2">
+              <div className="border rounded-lg p-10 bg-background">
+                <div className="flex flex-col gap-y-5 items-center justify-center">
+                  <span className="text-sm text-muted-foreground">
                     Support this product
-                  </p>
-                  <VotingButtons productId={product.id} voteCount={voteCount} />
+                  </span>
+                  <h1 className="text-2xl font-semibold">{name}</h1>
                 </div>
-                {voteCount > 100 && (
-                  <div className="pt-6 border-t">
-                    <Badge className="w-full justify-center py-2">
-                      🔥 Featured Product
-                    </Badge>
-                  </div>
-                )}
               </div>
               {websiteUrl && (
-                <Button
-                  asChild
-                  className="w-full rounded-lg"
-                  variant={"outline"}
-                >
+                <Button asChild className="w-full rounded-lg" variant="default">
                   <a
                     href={websiteUrl}
                     target="_blank"
