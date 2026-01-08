@@ -11,7 +11,7 @@ import { productPath } from "@/path";
 import { InferSelectModel } from "drizzle-orm";
 import { LucideStar } from "lucide-react";
 import Link from "next/link";
-import VotingButtons from "./ui/voting-buttons";
+import VotingButtons from "./voting-buttons";
 
 type ProductCardProps = InferSelectModel<typeof products>;
 

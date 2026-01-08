@@ -4,7 +4,7 @@ import downvoteProductAction from "@/features/products/actions/downvote-product-
 import upvoteProductAction from "@/features/products/actions/upvote-product-action";
 import { LucideChevronDown, LucideChevronUp } from "lucide-react";
 import { useState } from "react";
-import { Button } from "./button";
+import { Button } from "./ui/button";
 
 type VotingButtonsProps = {
   productId: string;
@@ -18,18 +18,23 @@ const VotingButtons = ({ productId, voteCount }: VotingButtonsProps) => {
 
   const handleUpvote = async () => {
     if (hasUpvoted) return;
-    setHasUpvoted(true);
-    setHasDownvoted(false); // Optional: reset downvote if you want strict "one or the other"
-    setCurrentVoteCount((prev) => prev + 1);
-    await upvoteProductAction(productId);
+
+    const result = await upvoteProductAction(productId);
+
+    if (result && result.success) {
+      setHasUpvoted(true);
+      setHasDownvoted(false);
+      setCurrentVoteCount((prev) => prev + 1);
+    }
   };
 
   const handleDownvote = async () => {
-    if (hasUpvoted) {
+    const result = await downvoteProductAction(productId);
+
+    if (hasUpvoted && result && result.success) {
       setHasDownvoted(true);
       setHasUpvoted(false);
       setCurrentVoteCount((prev) => prev - 1);
-      await downvoteProductAction(productId);
     }
   };
 
