@@ -3,7 +3,6 @@
 import SectionHeader from "@/components/section-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import VotingButtons from "@/components/voting-buttons";
 import getProductBySlug from "@/features/products/actions/get-product-by-slug";
 import getProducts from "@/features/products/actions/get-products";
 import { explorePath } from "@/path";
