@@ -16,8 +16,6 @@ import VotingButtons from "./ui/voting-buttons";
 type ProductCardProps = InferSelectModel<typeof products>;
 
 const ProductCard = (product: ProductCardProps) => {
-  const hasVoted = false;
-
   return (
     <Link href={productPath(product.id)}>
       <Card
@@ -44,7 +42,6 @@ const ProductCard = (product: ProductCardProps) => {
             </div>
 
             <VotingButtons
-              hasVoted={hasVoted}
               productId={product.id}
               voteCount={product.voteCount}
             />

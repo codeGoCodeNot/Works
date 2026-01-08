@@ -1,72 +1,69 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { LucideChevronUp, LucideChevronDown } from "lucide-react";
-import { Button } from "./button";
-import upvoteProductAction from "@/features/products/actions/upvote-product-action";
 import downvoteProductAction from "@/features/products/actions/downvote-product-action";
+import upvoteProductAction from "@/features/products/actions/upvote-product-action";
+import { cn } from "@/lib/utils";
+import { LucideChevronDown, LucideChevronUp } from "lucide-react";
+import { useState } from "react";
+import { Button } from "./button";
 
 type VotingButtonsProps = {
-  hasVoted: boolean;
   productId: string;
   voteCount: number;
 };
 
-const VotingButtons = ({
-  hasVoted,
-  productId,
-  voteCount,
-}: VotingButtonsProps) => {
+const VotingButtons = ({ productId, voteCount }: VotingButtonsProps) => {
+  const [hasUpvoted, setHasUpvoted] = useState(false);
+  const [hasDownvoted, setHasDownvoted] = useState(false);
+  const [currentVoteCount, setCurrentVoteCount] = useState(voteCount);
+
   const handleUpvote = async () => {
-    const result = await upvoteProductAction(productId);
-    console.log(result);
+    if (hasUpvoted) return;
+    setHasUpvoted(true);
+    setHasDownvoted(false); // Optional: reset downvote if you want strict "one or the other"
+    setCurrentVoteCount((prev) => prev + 1);
+    await upvoteProductAction(productId);
   };
 
   const handleDownvote = async () => {
-    const result = await downvoteProductAction(productId);
-    console.log(result);
+    if (hasUpvoted) {
+      setHasDownvoted(true);
+      setHasUpvoted(false);
+      setCurrentVoteCount((prev) => prev - 1);
+      await downvoteProductAction(productId);
+    }
   };
 
   return (
-    <>
-      <div
-        className="flex flex-col items-center"
-        onClick={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-        }}
+    <div
+      className="flex flex-col items-center"
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      }}
+    >
+      <Button
+        onClick={handleUpvote}
+        variant="ghost"
+        size="icon-sm"
+        className="text-primary"
+        disabled={hasUpvoted}
       >
-        <Button
-          onClick={handleUpvote}
-          variant="ghost"
-          size="icon-sm"
-          className={cn(
-            "text-primary",
-            hasVoted
-              ? "bg-primary/10 text-primary hover:bg-primary/20"
-              : "hover:bg-primary/10 hover:text-primary"
-          )}
-        >
-          <LucideChevronUp />
-        </Button>
-        <span className="text-sm font-semibold transition-colors text-foreground">
-          5
-        </span>
-        <Button
-          onClick={handleDownvote}
-          variant="ghost"
-          size="icon-sm"
-          className={cn(
-            "text-primary",
-            hasVoted
-              ? "hover:text-destructive"
-              : "opacity-50 cursor-not-allowed"
-          )}
-        >
-          <LucideChevronDown />
-        </Button>
-      </div>
-    </>
+        <LucideChevronUp />
+      </Button>
+      <span className="text-sm font-semibold transition-colors text-foreground">
+        {currentVoteCount}
+      </span>
+      <Button
+        onClick={handleDownvote}
+        variant="ghost"
+        size="icon-sm"
+        className="text-primary"
+        disabled={hasDownvoted}
+      >
+        <LucideChevronDown />
+      </Button>
+    </div>
   );
 };
 
