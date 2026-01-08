@@ -2,7 +2,6 @@
 
 import downvoteProductAction from "@/features/products/actions/downvote-product-action";
 import upvoteProductAction from "@/features/products/actions/upvote-product-action";
-import { cn } from "@/lib/utils";
 import { LucideChevronDown, LucideChevronUp } from "lucide-react";
 import { useState } from "react";
 import { Button } from "./button";
