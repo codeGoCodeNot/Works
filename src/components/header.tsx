@@ -1,8 +1,8 @@
-import { explorePath, homePath } from "@/path";
-import { LucideCompass, LucideWaypoints } from "lucide-react";
+import { homePath } from "@/path";
+import { LucideWaypoints } from "lucide-react";
 import Link from "next/link";
-import SignItems from "./sign-items";
 import { Suspense } from "react";
+import SignItems from "./sign-items";
 import Spinner from "./spinner";
 
 const Header = () => {
@@ -19,11 +19,6 @@ const Header = () => {
       <Link href={homePath()} className="text-xl font-medium flex items-center">
         Work
         <LucideWaypoints className="h-6 w-6" />
-      </Link>
-
-      <Link href={explorePath()} className="text-sm flex gap-x-2 items-center">
-        <LucideCompass size="20" />
-        Explore
       </Link>
 
       <div className="flex items-center gap-x-2">

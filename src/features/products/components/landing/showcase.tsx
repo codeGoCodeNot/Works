@@ -2,11 +2,11 @@
 
 import SectionHeader from "@/components/section-header";
 import { Button } from "@/components/ui/button";
-import { explorePath } from "@/path";
+import { homePath } from "@/path";
 import { FlameIcon, MoveUpRight } from "lucide-react";
 import Link from "next/link";
-import getProducts from "../../actions/get-products";
 import ProductCard from "../../../../components/product-card";
+import getProducts from "../../actions/get-products";
 
 const Showcase = async () => {
   const featuredProducts = await getProducts();
@@ -20,7 +20,7 @@ const Showcase = async () => {
             description="Community’s Best This Week"
           />
           <Button asChild variant="secondary" className="hidden sm:flex">
-            <Link href={explorePath()}>
+            <Link href={homePath()}>
               View all <MoveUpRight />
             </Link>
           </Button>

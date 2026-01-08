@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-import { explorePath, submitPath } from "@/path";
-import { MoveRight, Share2 } from "lucide-react";
-import StatsCard from "../../../../components/stats-card";
-import { fakeStatsIcon } from "@/data";
 import LiveBadge from "@/components/live-badge";
 import { Button } from "@/components/ui/button";
+import { fakeStatsIcon } from "@/data";
+import { submitPath } from "@/path";
+import { Share2 } from "lucide-react";
+import StatsCard from "../../../../components/stats-card";
 
 const HeroSection = () => {
   return (
@@ -25,20 +25,15 @@ const HeroSection = () => {
             launches, true makers, and honest feedback.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mb-16">
-            <Button asChild size="lg" className="text-base px-8 shadow-lg">
-              <Link href={submitPath()}>
-                <Share2 />
-                Share your project
-              </Link>
-            </Button>
             <Button
               asChild
               size="lg"
-              variant="secondary"
               className="text-base px-8 shadow-lg"
+              variant="secondary"
             >
-              <Link href={explorePath()}>
-                Explore projects <MoveRight />
+              <Link href={submitPath()}>
+                <Share2 />
+                Share your project
               </Link>
             </Button>
           </div>

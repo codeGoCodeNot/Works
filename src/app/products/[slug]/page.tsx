@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import getProductBySlug from "@/features/products/actions/get-product-by-slug";
 import getProducts from "@/features/products/actions/get-products";
-import { explorePath } from "@/path";
+import { explorePath, homePath } from "@/path";
 import {
   LucideArrowLeft,
   LucideCalendar,
@@ -36,11 +36,11 @@ const ProductPage = async ({ params }: ProductPageProps) => {
     <div className="py-20">
       <div className="wrapper">
         <Link
-          href={explorePath()}
+          href={homePath()}
           className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors"
         >
           <LucideArrowLeft />
-          Back to Explore
+          Back to Home
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
