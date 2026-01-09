@@ -12,8 +12,8 @@ const SectionHeader = ({
   children,
 }: SectionHeaderProps) => {
   return (
-    <section className="py-20">
-      <div className="wrapper space-y-12">
+    <section className="py-10">
+      <div className="wrapper">
         <div className="flex items-center gap-2 mb-3">
           {icon}
           <h2 className="text-3xl font-bold">{title}</h2>

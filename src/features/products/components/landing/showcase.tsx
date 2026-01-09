@@ -1,37 +1,23 @@
 "use cache";
 
+import ProductExplorer from "@/components/product-explorer";
 import SectionHeader from "@/components/section-header";
-import { Button } from "@/components/ui/button";
-import { homePath } from "@/path";
-import { FlameIcon, MoveUpRight } from "lucide-react";
-import Link from "next/link";
-import ProductCard from "../../../../components/product-card";
+import { FlameIcon } from "lucide-react";
 import getProducts from "../../actions/get-products";
-import ExploreProducts from "../explore-products";
 
 const Showcase = async () => {
   const featuredProducts = await getProducts();
   return (
     <section className="bg-muted/20">
-      <ExploreProducts />
       <div className="wrapper">
-        <div className="flex flex-1 items-center justify-between mb-8">
+        <div className="flex flex-1 items-center justify-between">
           <SectionHeader
             icon={<FlameIcon className="text-red-500 " />}
             title="Showcase"
             description="Community’s Best This Week"
           />
-          <Button asChild variant="secondary" className="hidden sm:flex">
-            <Link href={homePath()}>
-              View all <MoveUpRight />
-            </Link>
-          </Button>
         </div>
-        <div className="grid-wrapper">
-          {featuredProducts.map((product) => (
-            <ProductCard key={product.id} {...product} />
-          ))}
-        </div>
+        <ProductExplorer featuredProducts={featuredProducts} />
       </div>
     </section>
   );
