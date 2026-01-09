@@ -49,11 +49,17 @@ const ProductExplorer = ({ featuredProducts }: ProductExplorerProps) => {
           onChange={(e) => setSearchQuery(e.target.value)}
         />
         <div className="flex gap-x-2">
-          <Button onClick={() => setSortBy("trending")}>
+          <Button
+            variant={sortBy === "trending" ? "default" : "secondary"}
+            onClick={() => setSortBy("trending")}
+          >
             <LucideTrendingUp />
             Trending
           </Button>
-          <Button variant="secondary" onClick={() => setSortBy("recent")}>
+          <Button
+            variant={sortBy === "recent" ? "default" : "secondary"}
+            onClick={() => setSortBy("recent")}
+          >
             <LucideClock />
             Recent
           </Button>
