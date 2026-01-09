@@ -16,10 +16,25 @@ export type ProductExplorerProps = {
 
 const ProductExplorer = ({ featuredProducts }: ProductExplorerProps) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [sortBy, setSortBy] = useState<"trending" | "recent" | "newest">(
+    "trending"
+  );
 
-  const filteredProductsResult = featuredProducts.filter((product) =>
+  let filteredProductsResult = featuredProducts.filter((product) =>
     product.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  if (sortBy === "trending") {
+    filteredProductsResult = [
+      ...filteredProductsResult.sort((a, b) => b.voteCount - a.voteCount),
+    ];
+  } else if (sortBy === "recent" || sortBy === "newest") {
+    filteredProductsResult.sort(
+      (a, b) =>
+        new Date(b.createdAt || "").getTime() -
+        new Date(a.createdAt || "").getTime()
+    );
+  }
 
   return (
     <div>
@@ -34,11 +49,11 @@ const ProductExplorer = ({ featuredProducts }: ProductExplorerProps) => {
           onChange={(e) => setSearchQuery(e.target.value)}
         />
         <div className="flex gap-x-2">
-          <Button>
+          <Button onClick={() => setSortBy("trending")}>
             <LucideTrendingUp />
             Trending
           </Button>
-          <Button variant="secondary">
+          <Button variant="secondary" onClick={() => setSortBy("recent")}>
             <LucideClock />
             Recent
           </Button>
