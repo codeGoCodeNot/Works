@@ -1,3 +1,4 @@
+import EmptyState from "@/components/empty-state";
 import SectionHeader from "@/components/section-header";
 import getAdminProducts from "@/features/admin/actions/get-admin-products";
 import AdminProductCard from "@/features/admin/components/admin-product-card";
@@ -5,7 +6,7 @@ import StatsCard from "@/features/admin/components/stats-card";
 
 import { homePath } from "@/path";
 import { auth, clerkClient } from "@clerk/nextjs/server";
-import { LucideShield } from "lucide-react";
+import { LucideInbox, LucideShield } from "lucide-react";
 import { redirect } from "next/navigation";
 
 const AdminPage = async () => {
@@ -64,6 +65,12 @@ const AdminPage = async () => {
             </h2>
           </div>
           <div className="space-y-4">
+            {pendingProducts.length === 0 && (
+              <EmptyState
+                message="No pending products"
+                icon={<LucideInbox />}
+              />
+            )}
             {pendingProducts.map((product) => (
               <AdminProductCard key={product.id} {...product} />
             ))}
