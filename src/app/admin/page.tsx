@@ -1,8 +1,7 @@
-import ProductCard from "@/components/product-card";
 import SectionHeader from "@/components/section-header";
+import getAdminProducts from "@/features/admin/actions/get-admin-products";
 import AdminProductCard from "@/features/admin/components/admin-product-card";
 import StatsCard from "@/features/admin/components/stats-card";
-import getProducts from "@/features/products/actions/get-products";
 
 import { homePath } from "@/path";
 import { auth, clerkClient } from "@clerk/nextjs/server";
@@ -28,7 +27,7 @@ const AdminPage = async () => {
     redirect(homePath());
   }
 
-  const allProducts = await getProducts();
+  const allProducts = await getAdminProducts();
 
   const approvedProducts = allProducts.filter(
     (product) => product.status === "approved"
@@ -58,7 +57,6 @@ const AdminPage = async () => {
           rejected={rejectedProducts.length}
           all={allProducts.length}
         />
-
         <section className="my-12">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold">
@@ -67,6 +65,32 @@ const AdminPage = async () => {
           </div>
           <div className="space-y-4">
             {pendingProducts.map((product) => (
+              <AdminProductCard key={product.id} {...product} />
+            ))}
+          </div>
+        </section>
+
+        <section className="my-12">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold">
+              All Products ({allProducts.length})
+            </h2>
+          </div>
+          <div className="space-y-4">
+            {allProducts.map((product) => (
+              <AdminProductCard key={product.id} {...product} />
+            ))}
+          </div>
+        </section>
+
+        <section className="my-12">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold">
+              Rejected Products ({rejectedProducts.length})
+            </h2>
+          </div>
+          <div className="space-y-4">
+            {rejectedProducts.map((product) => (
               <AdminProductCard key={product.id} {...product} />
             ))}
           </div>
