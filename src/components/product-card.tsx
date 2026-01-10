@@ -13,7 +13,7 @@ import { LucideStar } from "lucide-react";
 import Link from "next/link";
 import VotingButtons from "./voting-buttons";
 
-type ProductCardProps = InferSelectModel<typeof products>;
+export type ProductCardProps = InferSelectModel<typeof products>;
 
 const ProductCard = (product: ProductCardProps) => {
   return (

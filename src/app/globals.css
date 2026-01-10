@@ -161,9 +161,12 @@
   .wrapper {
     @apply container mx-auto px-4 sm:px-6 lg:px-8;
   }
-}
 
-/* Empty state styling - used when no data is available */
-.empty-state {
-  @apply border rounded-lg p-12 text-center;
+  .status-badge-card {
+    @apply border rounded-lg p-6 transition-all hover:shadow-md;
+  }
+
+  .empty-state {
+    @apply border rounded-lg p-12 text-center;
+  }
 }

@@ -4,14 +4,7 @@ import { desc, eq } from "drizzle-orm";
 
 const getProducts = async () => {
   "use cache";
-
-  await new Promise((resolve) => setTimeout(resolve, 3000));
-
-  return await db
-    .select()
-    .from(products)
-    .where(eq(products.status, "approved"))
-    .orderBy(desc(products.voteCount));
+  return await db.select().from(products).orderBy(desc(products.voteCount));
 };
 
 export default getProducts;
