@@ -8,7 +8,7 @@ export const featuredProducts = [
     tags: ["AI", "Vision", "Tools"],
     createdAt: new Date("2025-12-31"),
     approvedAt: new Date("2026-01-02"),
-    status: "pending",
+    status: "approved",
     submittedBy: "alice@visionai.com",
     voteCount: 234,
     isFeatured: true,
