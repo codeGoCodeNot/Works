@@ -2,7 +2,9 @@
 
 import { products } from "@/db/schema";
 import { db } from "@/lib";
+import { homePath } from "@/path";
 import { auth, currentUser } from "@clerk/nextjs/server";
+import { revalidatePath } from "next/cache";
 import z from "zod";
 import { productSchema } from "../validation/product-validation";
 
@@ -13,7 +15,7 @@ export type FormStateProps = {
 };
 
 const productFormAction = async (
-  prevState: FormStateProps,
+  _prevState: FormStateProps,
   formData: FormData
 ) => {
   console.log(formData);
@@ -72,6 +74,8 @@ const productFormAction = async (
       organizationId: orgId,
       userId,
     });
+
+    revalidatePath(homePath());
 
     return {
       success: true,
